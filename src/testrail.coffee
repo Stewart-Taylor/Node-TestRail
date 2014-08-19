@@ -29,16 +29,17 @@ class TestRail
         ).auth( @user, @password, true)
 
 
+    getCommand: (command , callback) ->
+        request.get(
+            uri: this.getFullHostName() + command 
+            headers:
+                "content-type": "application/json"
+            , (err, res, body) ->
+                callback(body) 
+        ).auth( @user, @password, true)
 
 
-    #TODO: Include all switch and case id select
-    addTestRun: (projectID,suite_id,name,description) ->
-        json = {}
-        json.suite_id = suite_id
-        json.name = name
-        json.description = description
 
-        this.sendCommand(projectID, COMMAND_ADD_RUN,json)
 
 
     sendCommand: (projectID, command, json) ->
@@ -52,51 +53,82 @@ class TestRail
         ).auth @user, @password, true
 
 
-    closeRun: (run_id) ->
-        request.post(
-            uri: @host + "/index.php?/api/v2/" + "close_run/" + run_id
-            headers:
-                "content-type": "application/json"
-            body: JSON.stringify("")
-            , (err, res, body) ->
-                return res.body
-        ).auth @user, @password, true
 
 
-    getStatuses: () ->
-        request.get(
-            uri: @host + "/index.php?/api/v2/" + "get_statuses"
-            headers:
-                "Content-Type": "application/json"
-            , (err, res, body) ->
-                return res.body
-        ).auth @user, @password, true
+    constructPostData: (status_id, comment, test_id, seconds) ->
+        post_data = {}
+        post_data.status_id = status_id
+        post_data.comment = comment
+        post_data.elapsed = (seconds + "s")
+        JSON.stringify post_data
 
 
-    getRuns: (run_id, callback) ->
-        this.getIdCommand("get_runs/" , run_id, callback)
 
-    getTest: (test_id, callback) ->
-        this.getIdCommand("get_test/" , test_id, callback)
-
+    #-------- CASES  ----------------------
 
     getCase: (case_id, callback) ->
         this.getIdCommand("get_case/" , test_id, callback)
 
 
-    getMilestone: (milestone_id) ->
-        this.getIdCommand("get_milestone/" , test_id, callback)
+    #getCases: (case_id, callback) ->
 
+    #addCase: (case_id, callback) ->
+
+    #update_case: () ->
+
+    #delete_cate:() ->
+       
+
+
+    #-------- CASE TYPES ------------------
+
+    #getCaseTypes: () ->
+
+
+
+    #-------- MILESTONES ------------------
+
+    getMilestone: (milestone_id) ->
+        this.getIdCommand("get_milestone/" , milestone_id, callback)
 
     getMilestones: (milestone_id) ->
-        request.get(
-            uri: @host + "/index.php?/api/v2/" + "get_milestones/" 
-            headers:
-                "content-type": "application/json"
-            , (err, res, body) ->
-                return res.body
-        ).auth @user, @password, true
+        this.getIdCommand("get_milestones/", callback)
 
+    #addMilestone: () ->
+
+
+
+
+    #-------- PLANS -----------------------
+
+    #getPlan: () ->
+
+    #getPlans: () ->
+
+    #addPlan: () ->
+
+    #addPlanEntries: () ->
+
+    #closePlan: () ->
+
+    #-------- PRIORITIES ------------------
+
+    #getPriorities: () ->
+
+
+
+    #-------- PROJECTS --------------------
+
+    #getProject: () ->
+
+    #getProjects: () ->
+
+
+    #-------- RESULTS ---------------------
+
+    #getResults: () ->
+
+    #getResultsForCase: () ->
 
     addResult: (status, comment, test_id, seconds) ->
 
@@ -117,16 +149,73 @@ class TestRail
           process.exit 1  if status is false
         ).auth settings.user, settings.password, true
 
-    constructPostData: (status_id, comment, test_id, seconds) ->
-        post_data = {}
-        post_data.status_id = status_id
-        post_data.comment = comment
-        post_data.elapsed = (seconds + "s")
-        JSON.stringify post_data
+
+    #addResultForCase: () ->
+
+
+    #-------- RUNS ------------------------
+
+    #getRun: () ->
+
+    getRuns: (run_id, callback) ->
+        this.getIdCommand("get_runs/" , run_id, callback)
 
 
 
+    #TODO: Include all switch and case id select
+    addRun: (projectID,suite_id,name,description) ->
+        json = {}
+        json.suite_id = suite_id
+        json.name = name
+        json.description = description
+
+        this.sendCommand(projectID, COMMAND_ADD_RUN,json)
 
 
+    closeRun: (run_id) ->
+        request.post(
+            uri: @host + "/index.php?/api/v2/" + "close_run/" + run_id
+            headers:
+                "content-type": "application/json"
+            body: JSON.stringify("")
+            , (err, res, body) ->
+                return res.body
+        ).auth @user, @password, true
+
+    #-------- STATUSES --------------------
+
+    getStatuses: () ->
+        this.getIdCommand("get_statuses/", callback)
+
+    #-------- SUITES & SECTIONS -----------
+
+    #getSuite: () ->
+
+
+    #getSuites: () ->
+
+    #getSections: () ->
+
+    #addSuite: () ->
+
+    #addSection: () ->
+
+
+    #-------- TESTS -----------------------
+
+    getTest: (test_id, callback) ->
+        this.getIdCommand("get_test/" , test_id, callback)
+
+
+    #getTests: () ->
+
+
+    #-------- USERS -----------------------
+
+    #getUser: () ->
+
+    #getUserByEmail: () ->
+
+    #getUsers: () ->
 
 module.exports = TestRail
