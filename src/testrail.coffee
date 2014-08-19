@@ -112,7 +112,8 @@ class TestRail
 
     #-------- PLANS -----------------------
 
-    #getPlan: () ->
+    getPlan: (plan_id, callback) ->
+         this.getIdCommand("get_plan/",plan_id, callback)
 
     #getPlans: () ->
 
