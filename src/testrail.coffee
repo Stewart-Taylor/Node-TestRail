@@ -79,6 +79,11 @@ class TestRail
     #delete_cate:() ->
        
 
+    #-------- CASE FIELDS -----------------
+
+    getCaseFields: ( callback) ->
+        this.getCommand("get_case_fields/" , callback)
+
 
     #-------- CASE TYPES ------------------
 
