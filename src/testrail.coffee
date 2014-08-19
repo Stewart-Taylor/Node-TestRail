@@ -67,6 +67,17 @@ class TestRail
         ).auth( @user, @password, true)   
 
 
+    addExtraCommand: (command, id, extra, postData, callback) ->
+        request.post(
+            uri: this.getFullHostName() + command + id + extra,
+            headers:
+                "content-type": "application/json"
+            body: postData
+            , (err, res, body) ->
+                callback(body) 
+        ).auth( @user, @password, true)   
+
+
        
     sendCommand: (projectID, command, json) ->
         request.post(
@@ -209,7 +220,17 @@ class TestRail
         ).auth settings.user, settings.password, true
 
 
-    #addResultForCase: () ->
+    addResultForCase: (run_id,case_id,status_id,comment,version,elapsed,defects,assignedto_id, callback) ->
+        json = {}
+        json.status_id = status_id
+        json.comment = comment
+        json.version = version
+        json.elapsed = elapsed
+        json.defects = defects
+        json.assignedto_id = assignedto_id
+        this.addExtraCommand("add_result_for_case/", run_id, ("/" + case_id),  JSON.stringify(json), callback)
+
+    #addResultsForCases
 
 
     #-------- RUNS ------------------------
