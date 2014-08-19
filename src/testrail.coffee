@@ -136,7 +136,8 @@ class TestRail
     getProject: (project_id, callback) ->
         this.getIdCommand("get_project/",project_id, callback)
 
-    #getProjects: () ->
+    getProjects: (callback) ->
+        this.getCommand("get_projects/", callback)
 
 
     #-------- RESULTS ---------------------
