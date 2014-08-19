@@ -115,7 +115,8 @@ class TestRail
     getPlan: (plan_id, callback) ->
          this.getIdCommand("get_plan/",plan_id, callback)
 
-    #getPlans: () ->
+    getPlans: (project_id, callback) ->
+        this.getIdCommand("get_plans/",project_id, callback)
 
     #addPlan: () ->
 
