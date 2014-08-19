@@ -189,8 +189,8 @@ class TestRail
 
     #-------- SUITES & SECTIONS -----------
 
-    #getSuite: () ->
-
+    getSuite: (suite_id, callback) ->
+        this.getIdCommand("get_suite/" , suite_id, callback)
 
     getSuites: (project_id, callback) ->
         this.getIdCommand("get_suites/" , project_id, callback)
