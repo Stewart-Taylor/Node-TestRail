@@ -184,8 +184,8 @@ class TestRail
 
     #-------- STATUSES --------------------
 
-    getStatuses: () ->
-        this.getIdCommand("get_statuses/", callback)
+    getStatuses: (callback) ->
+        this.getCommand("get_statuses/", callback)
 
     #-------- SUITES & SECTIONS -----------
 
