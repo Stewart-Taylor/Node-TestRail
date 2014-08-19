@@ -207,8 +207,8 @@ class TestRail
         this.getIdCommand("get_test/" , test_id, callback)
 
 
-    #getTests: () ->
-
+    getTests: (run_id, callback) ->
+        this.getIdCommand("get_tests/" , run_id, callback)
 
     #-------- USERS -----------------------
 
