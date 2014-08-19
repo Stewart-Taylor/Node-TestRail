@@ -24,8 +24,8 @@ class TestRail
             headers:
                 "content-type": "application/json"
             , (err, res, body) ->
-                callback(body) 
-        ).auth( @user, @password, true)   
+                callback(body)
+        ).auth( @user, @password, true)
 
 
     getIdCommand: (command , id, callback) ->
@@ -34,17 +34,17 @@ class TestRail
             headers:
                 "content-type": "application/json"
             , (err, res, body) ->
-                callback(body) 
+                callback(body)
         ).auth( @user, @password, true)
 
 
     getCommand: (command , callback) ->
         request.get(
-            uri: this.getFullHostName() + command 
+            uri: this.getFullHostName() + command
             headers:
                 "content-type": "application/json"
             , (err, res, body) ->
-                callback(body) 
+                callback(body)
         ).auth( @user, @password, true)
 
     getExtraCommand: (command, id, extra, callback) ->
@@ -53,7 +53,7 @@ class TestRail
             headers:
                 "content-type": "application/json"
             , (err, res, body) ->
-                callback(body) 
+                callback(body)
         ).auth( @user, @password, true)
 
     addCommand: (command, id, postData, callback) ->
@@ -63,8 +63,8 @@ class TestRail
                 "content-type": "application/json"
             body: postData
             , (err, res, body) ->
-                callback(body) 
-        ).auth( @user, @password, true)   
+                callback(body)
+        ).auth( @user, @password, true)
 
 
     addExtraCommand: (command, id, extra, postData, callback) ->
@@ -74,8 +74,8 @@ class TestRail
                 "content-type": "application/json"
             body: postData
             , (err, res, body) ->
-                callback(body) 
-        ).auth( @user, @password, true)   
+                callback(body)
+        ).auth( @user, @password, true)
 
 
        
@@ -150,7 +150,7 @@ class TestRail
     #-------- PLANS -----------------------
 
     getPlan: (plan_id, callback) ->
-         this.getIdCommand("get_plan/",plan_id, callback)
+        this.getIdCommand("get_plan/",plan_id, callback)
 
     getPlans: (project_id, callback) ->
         this.getIdCommand("get_plans/",project_id, callback)
@@ -200,6 +200,8 @@ class TestRail
 
     #getResultsForCase: () ->
 
+
+    #TODO: Use new command functions
     addResult: (status, comment, test_id, seconds) ->
 
         #We set to fail by default
@@ -210,13 +212,13 @@ class TestRail
         postData = testRailHelper.constructPostData(status_id, comment, test_id, seconds)
         testRailHelper.displayTestAdded postData
         request.post(
-          uri: settings.host + settings.command + test_id
-          headers:
-            "content-type": "application/json"
+            uri: settings.host + settings.command + test_id
+            headers:
+                "content-type": "application/json"
 
-          body: postData
+            body: postData
         , (err, res, body) ->
-          process.exit 1  if status is false
+            process.exit 1  if status is false
         ).auth settings.user, settings.password, true
 
 
