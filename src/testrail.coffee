@@ -126,7 +126,8 @@ class TestRail
 
     #-------- PRIORITIES ------------------
 
-    #getPriorities: () ->
+    getPriorities: (callback) ->
+        this.getCommand("get_priorities/", callback)
 
 
 
