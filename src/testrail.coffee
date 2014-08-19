@@ -211,13 +211,12 @@ class TestRail
 
 
     #TODO: Include all switch and case id select
-    addRun: (projectID,suite_id,name,description) ->
+    addRun: (projectID,suite_id,name,description, callback) ->
         json = {}
         json.suite_id = suite_id
         json.name = name
         json.description = description
-
-        this.sendCommand(projectID, COMMAND_ADD_RUN,json)
+        this.addCommand("add_run/", projectID, JSON.stringify(json) , callback)
 
 
     closeRun: (run_id,callback) ->
