@@ -165,6 +165,18 @@ class TestRail
     getProjects: (callback) ->
         this.getCommand("get_projects/", callback)
 
+    addProject: (name,announcement,show_announcement, callback) ->
+        json = {}
+        json.name = name
+        json.announcement = announcement
+        json.show_announcement = show_announcement
+        this.addCommand("add_project/", "", JSON.stringify(json), callback)
+
+
+    #updateProject: () ->
+
+    deleteProject: (project_id, callback) ->
+        this.closeCommand("delete_project/",project_id, callback)
 
     #-------- RESULTS ---------------------
 
