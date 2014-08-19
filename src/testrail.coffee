@@ -87,8 +87,8 @@ class TestRail
 
     #-------- CASE TYPES ------------------
 
-    #getCaseTypes: () ->
-
+    getCaseTypes: ( callback) ->
+        this.getCommand("get_case_types/" , callback)
 
 
     #-------- MILESTONES ------------------
