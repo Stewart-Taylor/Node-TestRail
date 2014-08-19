@@ -67,7 +67,7 @@ class TestRail
     #-------- CASES  ----------------------
 
     getCase: (case_id, callback) ->
-        this.getIdCommand("get_case/" , test_id, callback)
+        this.getIdCommand("get_case/" , case_id, callback)
 
 
     #getCases: (case_id, callback) ->
