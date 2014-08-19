@@ -212,7 +212,8 @@ class TestRail
 
     #-------- USERS -----------------------
 
-    #getUser: () ->
+    getUser: (user_id, callback) ->
+        this.getIdCommand("get_user/" , user_id, callback)
 
     #getUserByEmail: () ->
 
