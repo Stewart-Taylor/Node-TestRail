@@ -308,7 +308,8 @@ class TestRail
     getUser: (user_id, callback) ->
         this.getIdCommand("get_user/" , user_id, callback)
 
-    #getUserByEmail: () ->
+    getUserByEmail: (email, callback) ->
+        this.getExtraCommand("" , "", "get_user_by_email&email=" + email, callback)
 
     #getUsers: () ->
 
