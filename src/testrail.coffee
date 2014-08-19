@@ -76,37 +76,17 @@ class TestRail
     getRuns: (run_id, callback) ->
         this.getIdCommand("get_runs/" , run_id, callback)
 
+    getTest: (test_id, callback) ->
+        this.getIdCommand("get_test/" , test_id, callback)
 
 
-    getTest: (test_id) ->
-        request.get(
-            uri: @host + "/index.php?/api/v2/" + "get_test/" + test_id
-            headers:
-                "content-type": "application/json"
-            , (err, res, body) ->
-                return res.body
-        ).auth @user, @password, true
-
-
-    getCase: (case_id) ->
-        request.get(
-            uri: @host + "/index.php?/api/v2/" + "get_case/" + case_id
-            headers:
-                "content-type": "application/json"
-            , (err, res, body) ->
-                return res.body
-        ).auth @user, @password, true
+    getCase: (case_id, callback) ->
+        this.getIdCommand("get_case/" , test_id, callback)
 
 
     getMilestone: (milestone_id) ->
-        request.get(
-            uri: @host + "/index.php?/api/v2/" + "get_milestone/" + milestone_id
-            headers:
-                "content-type": "application/json"
-            , (err, res, bodyC) ->
-                console.log(bodyC)
-                return res.body
-        ).auth @user, @password, true
+        this.getIdCommand("get_milestone/" , test_id, callback)
+
 
     getMilestones: (milestone_id) ->
         request.get(
