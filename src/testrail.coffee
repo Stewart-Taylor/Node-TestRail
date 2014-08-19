@@ -155,7 +155,8 @@ class TestRail
 
     #-------- RUNS ------------------------
 
-    #getRun: () ->
+    getRun: (run_id, callback) ->
+        this.getIdCommand("get_run/" , run_id, callback)
 
     getRuns: (run_id, callback) ->
         this.getIdCommand("get_runs/" , run_id, callback)
