@@ -289,7 +289,12 @@ class TestRail
         this.getIdCommand("get_suites/" , project_id, callback)
 
 
-    #addSuite: () ->
+    addSuite: (project_id,name, description, callback) ->
+        json = {}
+        json.name = name
+        json.description = description
+        this.addCommand("add_suite/", project_id, JSON.stringify(json) , callback)
+        
 
     #addSection: () ->
 
