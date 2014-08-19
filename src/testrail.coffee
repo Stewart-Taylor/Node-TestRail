@@ -102,8 +102,8 @@ class TestRail
     getMilestone: (milestone_id, callback) ->
         this.getIdCommand("get_milestone/" , milestone_id, callback)
 
-    getMilestones: (milestone_id, callback) ->
-        this.getIdCommand("get_milestones/", callback)
+    getMilestones: (project_id, callback) ->
+        this.getIdCommand("get_milestones/",project_id, callback)
 
     #addMilestone: () ->
 
