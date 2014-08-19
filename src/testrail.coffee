@@ -38,6 +38,15 @@ class TestRail
                 callback(body) 
         ).auth( @user, @password, true)
 
+    getExtraCommand: (command, id, extra, callback) ->
+        request.get(
+            uri: this.getFullHostName() + command + id + extra
+            headers:
+                "content-type": "application/json"
+            , (err, res, body) ->
+                callback(body) 
+        ).auth( @user, @password, true)
+
 
 
 
@@ -142,7 +151,12 @@ class TestRail
 
     #-------- RESULTS ---------------------
 
-    #getResults: () ->
+    getResults: (test_id, callback, limit) ->
+        if not limit?
+            this.getIdCommand("get_results/",test_id, callback)
+        else
+            extra = "&limit=" + limit
+            this.getExtraCommand("get_results/",test_id, extra, callback)
 
     #getResultsForCase: () ->
 
