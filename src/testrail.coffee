@@ -56,10 +56,18 @@ class TestRail
                 callback(body) 
         ).auth( @user, @password, true)
 
+    addCommand: (command, id, postData, callback) ->
+        request.post(
+            uri: this.getFullHostName() + command + id
+            headers:
+                "content-type": "application/json"
+            body: postData
+            , (err, res, body) ->
+                callback(body) 
+        ).auth( @user, @password, true)   
 
 
-
-
+       
     sendCommand: (projectID, command, json) ->
         request.post(
             uri: @host + "/index.php?/api/v2/" + command + projectID
@@ -227,8 +235,8 @@ class TestRail
     getSection: (section_id , callback) ->
         this.getIdCommand("get_section/" , section_id, callback)
 
-    #getSections: () ->
-     #   this.getIdCommand("get_sections/" , project_id, callback)
+    getSections: (project_id, suite_id, callback) ->
+        this.getExtraCommand("get_sections/" , project_id, "&suite_id=" + suite_id, callback)
 
     #addSection: () ->
 
