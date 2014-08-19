@@ -18,6 +18,15 @@ class TestRail
     getFullHostName: () ->
         return @host + API_ROUTE
 
+    closeCommand: (command, id, callback) ->
+        request.post(
+            uri: this.getFullHostName() + command + id
+            headers:
+                "content-type": "application/json"
+            , (err, res, body) ->
+                callback(body) 
+        ).auth( @user, @password, true)   
+
 
     getIdCommand: (command , id, callback) ->
         request.get(
@@ -203,15 +212,9 @@ class TestRail
         this.sendCommand(projectID, COMMAND_ADD_RUN,json)
 
 
-    closeRun: (run_id) ->
-        request.post(
-            uri: @host + "/index.php?/api/v2/" + "close_run/" + run_id
-            headers:
-                "content-type": "application/json"
-            body: JSON.stringify("")
-            , (err, res, body) ->
-                return res.body
-        ).auth @user, @password, true
+    closeRun: (run_id,callback) ->
+        this.closeCommand("close_run/", run_id, callback)
+
 
     #-------- STATUSES --------------------
 
