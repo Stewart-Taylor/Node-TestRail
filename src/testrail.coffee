@@ -107,7 +107,11 @@ class TestRail
         this.getIdCommand("get_case/" , case_id, callback)
 
 
-    #getCases: (case_id, callback) ->
+    getCases: (project_id, suite_id, section_id, callback) ->
+        if section_id?
+            this.getExtraCommand("get_cases/", project_id, "&suite_id=" + suite_id + "&section_id=" + section_id, callback) 
+        else
+            this.getExtraCommand("get_cases/", project_id, "&suite_id=" + suite_id , callback)  
 
     #addCase: (case_id, callback) ->
 
