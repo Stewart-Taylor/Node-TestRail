@@ -187,7 +187,24 @@ class TestRail
     getStatuses: (callback) ->
         this.getCommand("get_statuses/", callback)
 
-    #-------- SUITES & SECTIONS -----------
+
+     #-------- SECTIONS --------------------
+
+    getSection: (section_id , callback) ->
+        this.getIdCommand("get_section/" , section_id, callback)
+
+    #getSections: () ->
+     #   this.getIdCommand("get_sections/" , project_id, callback)
+
+    #addSection: () ->
+
+
+    #updateSection: () ->
+
+    #deleteSection: () ->
+
+
+    #-------- SUITES -----------
 
     getSuite: (suite_id, callback) ->
         this.getIdCommand("get_suite/" , suite_id, callback)
@@ -195,7 +212,6 @@ class TestRail
     getSuites: (project_id, callback) ->
         this.getIdCommand("get_suites/" , project_id, callback)
 
-    #getSections: () ->
 
     #addSuite: () ->
 
