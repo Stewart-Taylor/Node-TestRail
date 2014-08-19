@@ -91,6 +91,12 @@ class TestRail
         this.getCommand("get_case_types/" , callback)
 
 
+
+    #-------- CONFIGURATIONS ------------------
+
+    getConfigs: (project_id, callback) ->
+        this.getIdCommand("get_configs/" , project_id, callback)
+
     #-------- MILESTONES ------------------
 
     getMilestone: (milestone_id) ->
