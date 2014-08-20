@@ -7,7 +7,6 @@ class TestRail
 
     constructor: (@host, @user, @password) ->
  
-
     getFullHostName: () ->
         return @host + API_ROUTE
 
@@ -20,7 +19,6 @@ class TestRail
                 callback(body)
         ).auth( @user, @password, true)
 
-
     getIdCommand: (command , id, callback) ->
         request.get(
             uri: this.getFullHostName() + command + id
@@ -29,7 +27,6 @@ class TestRail
             , (err, res, body) ->
                 callback(body)
         ).auth( @user, @password, true)
-
 
     getCommand: (command , callback) ->
         request.get(
@@ -59,7 +56,6 @@ class TestRail
                 callback(body)
         ).auth( @user, @password, true)
 
-
     addExtraCommand: (command, id, extra, postData, callback) ->
         request.post(
             uri: this.getFullHostName() + command + id + extra,
@@ -69,9 +65,7 @@ class TestRail
             , (err, res, body) ->
                 callback(body)
         ).auth( @user, @password, true)
-
-
-       
+  
     sendCommand: (projectID, command, json) ->
         request.post(
             uri: @host + "/index.php?/api/v2/" + command + projectID
@@ -81,9 +75,6 @@ class TestRail
             , (err, res, body) ->
                 return res.body
         ).auth @user, @password, true
-
-
-
 
     constructPostData: (status_id, comment, test_id, seconds) ->
         post_data = {}
@@ -98,12 +89,11 @@ class TestRail
     getCase: (case_id, callback) ->
         this.getIdCommand("get_case/" , case_id, callback)
 
-
     getCases: (project_id, suite_id, section_id, callback) ->
         if section_id?
-            this.getExtraCommand("get_cases/", project_id, "&suite_id=" + suite_id + "&section_id=" + section_id, callback) 
+            this.getExtraCommand("get_cases/", project_id, "&suite_id=" + suite_id + "&section_id=" + section_id, callback)
         else
-            this.getExtraCommand("get_cases/", project_id, "&suite_id=" + suite_id , callback)  
+            this.getExtraCommand("get_cases/", project_id, "&suite_id=" + suite_id , callback)
 
     addCase: (section_id, title, type_id,project_id,estimate,milestone_id,refs, callback) ->
         json = {}
@@ -360,14 +350,12 @@ class TestRail
     getSuites: (project_id, callback) ->
         this.getIdCommand("get_suites/" , project_id, callback)
 
-
     addSuite: (project_id,name, description, callback) ->
         json = {}
         json.name = name
         json.description = description
         this.addCommand("add_suite/", project_id, JSON.stringify(json) , callback)
         
-
     updateSuite: (suite_id,name, description, callback) ->
         json = {}
         json.name = name
@@ -377,12 +365,10 @@ class TestRail
     deleteSuite: (suite_id, callback) ->
         this.closeCommand("delete_suite/", suite_id, callback)
 
-
     #-------- TESTS -----------------------
 
     getTest: (test_id, callback) ->
         this.getIdCommand("get_test/" , test_id, callback)
-
 
     getTests: (run_id, callback) ->
         this.getIdCommand("get_tests/" , run_id, callback)
