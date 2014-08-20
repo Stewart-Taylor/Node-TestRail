@@ -197,7 +197,13 @@ class TestRail
         json.milestone_id = milestone_id
         this.addCommand("update_plan/", plan_id, JSON.stringify(json), callback)
 
-    #updatePlanEntry: () ->
+    updatePlanEntry: (plan_id, entry_id, name, assignedto_id,include_all, callback) ->
+        json = {}
+        json.name = name
+        json.assignedto_id = assignedto_id
+        json.include_all = include_all
+        this.addCommand("update_plan_entry/", (plan_id + "/" + entry_id), JSON.stringify(json), callback)
+
 
     closePlan: (plan_id, callback) ->
         this.closeCommand("close_plan/", plan_id, callback)
