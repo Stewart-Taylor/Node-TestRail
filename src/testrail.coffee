@@ -344,8 +344,10 @@ class TestRail
         json.name = name
         this.addCommand("add_section/", project_id, JSON.stringify(json) , callback)
 
-
-    #updateSection: () ->
+    updateSection: (section_id, name, callback) ->
+        json = {}
+        json.name = name
+        this.addCommand("update_Section/", section_id, JSON.stringify(json) , callback)
 
     deleteSection: (section_id, callback) ->
         this.closeCommand("delete_section/", section_id, callback)
