@@ -190,7 +190,12 @@ class TestRail
         json.include_all = include_all
         this.addCommand("add_plan_entry/", plan_id, JSON.stringify(json), callback)
 
-    #updatePlan: () ->
+    updatePlan: (plan_id, name, description, milestone_id,callback) ->
+        json = {}
+        json.name = name
+        json.description = description
+        json.milestone_id = milestone_id
+        this.addCommand("update_plan/", plan_id, JSON.stringify(json), callback)
 
     #updatePlanEntry: () ->
 
