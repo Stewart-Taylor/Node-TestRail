@@ -154,10 +154,12 @@ class TestRail
     getMilestones: (project_id, callback) ->
         this.getIdCommand("get_milestones/",project_id, callback)
 
-    #addMilestone: () ->
-
-
-
+    addMilestone: (project_id, name, description, due_on, callback) ->
+        json = {}
+        json.name = name
+        json.description = description
+        json.due_on = due_on
+        this.addCommand("add_milestone/", project_id, JSON.stringify(json), callback)
 
     #-------- PLANS -----------------------
 
