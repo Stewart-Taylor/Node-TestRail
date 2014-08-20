@@ -116,10 +116,10 @@ class TestRail
         json.refs = refs
         this.addCommand("add_case/", section_id, JSON.stringify(json) , callback)
 
-    #update_case: () ->
+    #updateCase: () ->
 
-    #delete_cate:() ->
-       
+    deleteCase:(case_id, callback) ->
+        this.closeCommand("delete_case/" , case_id, callback)
 
     #-------- CASE FIELDS -----------------
 
