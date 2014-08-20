@@ -311,6 +311,13 @@ class TestRail
         json.description = description
         this.addCommand("add_run/", projectID, JSON.stringify(json) , callback)
 
+    updateRun: (runID,name,description, callback) ->
+        json = {}
+        json.suite_id = suite_id
+        json.name = name
+        json.description = description
+        this.addCommand("update_run/", runID, JSON.stringify(json) , callback)
+
     closeRun: (run_id,callback) ->
         this.closeCommand("close_run/", run_id, callback)
 
