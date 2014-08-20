@@ -232,7 +232,13 @@ class TestRail
             extra = "&limit=" + limit
             this.getExtraCommand("get_results/",test_id, extra, callback)
 
-    #getResultsForCase: () ->
+    getResultsForCase: (run_id, case_id, limit, callback) ->
+        if not limit?
+            extra = "/" + case_id
+            this.getExtraCommand("get_results_for_case/",run_id, extra, callback)
+        else
+            extra = "/" + case_id + "&limit=" + limit
+            this.getExtraCommand("get_results_for_case/",run_id, extra, callback)
 
 
     addResult: (test_id, status_id, comment,version, elapsed,defects,assignedto_id, callback) ->
