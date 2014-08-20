@@ -354,6 +354,7 @@ class TestRail
     getUserByEmail: (email, callback) ->
         this.getExtraCommand("" , "", "get_user_by_email&email=" + email, callback)
 
-    #getUsers: () ->
+    getUsers: (callback) ->
+        this.getCommand("get_users/" , callback)
 
 module.exports = TestRail
