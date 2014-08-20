@@ -116,7 +116,15 @@ class TestRail
         json.refs = refs
         this.addCommand("add_case/", section_id, JSON.stringify(json) , callback)
 
-    #updateCase: () ->
+    updateCase: (case_id, title, type_id,project_id,estimate,milestone_id,refs, callback) ->
+        json = {}
+        json.title = title
+        json.type_id = type_id
+        json.project_id = project_id
+        json.estimate = estimate
+        json.milestone_id = milestone_id
+        json.refs = refs
+        this.addCommand("update_case/", case_id, JSON.stringify(json) , callback)
 
     deleteCase:(case_id, callback) ->
         this.closeCommand("delete_case/" , case_id, callback)
