@@ -93,7 +93,6 @@ class TestRail
         JSON.stringify post_data
 
 
-
     #-------- CASES  ----------------------
 
     getCase: (case_id, callback) ->
@@ -134,13 +133,10 @@ class TestRail
     getCaseFields: ( callback) ->
         this.getCommand("get_case_fields/" , callback)
 
-
     #-------- CASE TYPES ------------------
 
     getCaseTypes: ( callback) ->
         this.getCommand("get_case_types/" , callback)
-
-
 
     #-------- CONFIGURATIONS ------------------
 
@@ -172,7 +168,6 @@ class TestRail
 
     deleteMilestone: (milestone_id, callback) ->
         this.closeCommand("delete_milestone/", milestone_id, callback)
-
 
     #-------- PLANS -----------------------
 
@@ -212,7 +207,6 @@ class TestRail
         json.include_all = include_all
         this.addCommand("update_plan_entry/", (plan_id + "/" + entry_id), JSON.stringify(json), callback)
 
-
     closePlan: (plan_id, callback) ->
         this.closeCommand("close_plan/", plan_id, callback)
 
@@ -226,8 +220,6 @@ class TestRail
 
     getPriorities: (callback) ->
         this.getCommand("get_priorities/", callback)
-
-
 
     #-------- PROJECTS --------------------
 
@@ -243,7 +235,6 @@ class TestRail
         json.announcement = announcement
         json.show_announcement = show_announcement
         this.addCommand("add_project/", "", JSON.stringify(json), callback)
-
 
     updateProject: (project_id, name,announcement,show_announcement, is_completed, callback) ->
         json = {}
@@ -273,7 +264,6 @@ class TestRail
             extra = "/" + case_id + "&limit=" + limit
             this.getExtraCommand("get_results_for_case/",run_id, extra, callback)
 
-
     addResult: (test_id, status_id, comment,version, elapsed,defects,assignedto_id, callback) ->
         json = {}
         json.status_id = status_id
@@ -286,7 +276,6 @@ class TestRail
 
      addResults: (run_id, results, callback) ->
         this.addExtraCommand("add_results/", run_id,  JSON.stringify(results), callback)
-
 
     addResultForCase: (run_id,case_id,status_id,comment,version,elapsed,defects,assignedto_id, callback) ->
         json = {}
@@ -302,6 +291,7 @@ class TestRail
         this.addExtraCommand("add_results_for_cases/", run_id,  JSON.stringify(results), callback)
 
     #-------- RESULT FIELDS ---------------------
+
     getResultFields: (callback) ->
         this.getIdCommand("get_result_fields/" , "", callback)
 
@@ -313,8 +303,6 @@ class TestRail
     getRuns: (run_id, callback) ->
         this.getIdCommand("get_runs/" , run_id, callback)
 
-
-
     #TODO: Include all switch and case id select
     addRun: (projectID,suite_id,name,description, callback) ->
         json = {}
@@ -323,22 +311,18 @@ class TestRail
         json.description = description
         this.addCommand("add_run/", projectID, JSON.stringify(json) , callback)
 
-
     closeRun: (run_id,callback) ->
         this.closeCommand("close_run/", run_id, callback)
 
-
     deleteRun: (run_id,callback) ->
         this.closeCommand("delete_run/", run_id, callback)
-
 
     #-------- STATUSES --------------------
 
     getStatuses: (callback) ->
         this.getCommand("get_statuses/", callback)
 
-
-     #-------- SECTIONS --------------------
+    #-------- SECTIONS --------------------
 
     getSection: (section_id , callback) ->
         this.getIdCommand("get_section/" , section_id, callback)
@@ -353,7 +337,6 @@ class TestRail
 
     deleteSection: (section_id, callback) ->
         this.closeCommand("delete_section/", section_id, callback)
-
 
     #-------- SUITES -----------
 
@@ -371,7 +354,11 @@ class TestRail
         this.addCommand("add_suite/", project_id, JSON.stringify(json) , callback)
         
 
-    #updateSuite: () ->
+    updateSuite: (suite_id,name, description, callback) ->
+        json = {}
+        json.name = name
+        json.description = description
+        this.addCommand("update_suite/", suite_id, JSON.stringify(json) , callback)
 
     deleteSuite: (suite_id, callback) ->
         this.closeCommand("delete_suite/", suite_id, callback)
