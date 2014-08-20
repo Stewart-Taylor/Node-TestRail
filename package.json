@@ -1,6 +1,6 @@
 {
   "author": "Stewart Taylor <stewart@taylore.net> (http://taylore.net",
-  "name": "Node-TestRail",
+  "name": "node-testrail",
   "description": "An API wrapper for TestRail",
   "version": "0.0.1",
   "repository": {
