@@ -322,7 +322,10 @@ class TestRail
         this.addCommand("add_suite/", project_id, JSON.stringify(json) , callback)
         
 
-    #addSection: () ->
+    #updateSuite: () ->
+
+    deleteSuite: (suite_id, callback) ->
+        this.closeCommand("delete_suite/", suite_id, callback)
 
 
     #-------- TESTS -----------------------
