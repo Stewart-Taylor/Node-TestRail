@@ -260,6 +260,9 @@ class TestRail
 
     #addResultsForCases
 
+    #-------- RESULT FIELDS ---------------------
+    getResultFields: (callback) ->
+        this.getIdCommand("get_result_fields/" , "", callback)
 
     #-------- RUNS ------------------------
 
