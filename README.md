@@ -13,7 +13,7 @@ var TestRail = require("Node-TestRail");
 
 var testrail = new TestRail("https://example.testrail.com/", "email@example.com", "password");
 
-testrail.getUser(1, 1, "It broke", "1.0", "10s", null, 7, function(body) {
+testrail.addResult(1, 1, "It broke", "1.0", "10s", null, 7, function(body) {
     console.log(body);
 });
 ```
