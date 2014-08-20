@@ -312,7 +312,8 @@ class TestRail
 
     #updateSection: () ->
 
-    #deleteSection: () ->
+    deleteSection: (section_id, callback) ->
+        this.closeCommand("delete_section/", section_id, callback)
 
 
     #-------- SUITES -----------
