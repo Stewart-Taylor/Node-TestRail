@@ -162,6 +162,14 @@ class TestRail
         json.due_on = due_on
         this.addCommand("add_milestone/", project_id, JSON.stringify(json), callback)
 
+    updateMilestone: (milestone_id, name, description, due_on, is_completed, callback) ->
+        json = {}
+        json.name = name
+        json.description = description
+        json.due_on = due_on
+        json.is_completed = is_completed
+        this.addCommand("update_milestone/", milestone_id, JSON.stringify(json), callback)
+
     deleteMilestone: (milestone_id, callback) ->
         this.closeCommand("delete_milestone/", milestone_id, callback)
 
