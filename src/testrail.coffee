@@ -174,7 +174,14 @@ class TestRail
         json.milestone_id = milestone_id
         this.addCommand("add_plan/", project_id, JSON.stringify(json), callback)
 
-    #addPlanEntries: () ->
+    #TODO: update to handle extra params
+    addPlanEntry: (plan_id, suite_id, name, assignedto_id,include_all, callback) ->
+        json = {}
+        json.suite_id = suite_id
+        json.name = name
+        json.assignedto_id = assignedto_id
+        json.include_all = include_all
+        this.addCommand("add_plan_entry/", plan_id, JSON.stringify(json), callback)
 
     #closePlan: () ->
 
