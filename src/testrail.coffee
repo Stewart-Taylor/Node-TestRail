@@ -231,25 +231,15 @@ class TestRail
     #getResultsForCase: () ->
 
 
-    #TODO: Use new command functions
-    addResult: (status, comment, test_id, seconds) ->
-
-        #We set to fail by default
-        status_id = TEST_FAILED
-
-        #Checks if test Passes
-        status_id = TEST_PASSED  if status is true
-        postData = testRailHelper.constructPostData(status_id, comment, test_id, seconds)
-        testRailHelper.displayTestAdded postData
-        request.post(
-            uri: settings.host + settings.command + test_id
-            headers:
-                "content-type": "application/json"
-
-            body: postData
-        , (err, res, body) ->
-            process.exit 1  if status is false
-        ).auth settings.user, settings.password, true
+    addResult: (test_id, status_id, comment,version, elapsed,defects,assignedto_id, callback) ->
+        json = {}
+        json.status_id = status_id
+        json.comment = comment
+        json.version = version
+        json.elapsed = elapsed
+        json.defects = defects
+        json.assignedto_id = assignedto_id
+        this.addCommand("add_result/", test_id,  JSON.stringify(json), callback)
 
 
     addResultForCase: (run_id,case_id,status_id,comment,version,elapsed,defects,assignedto_id, callback) ->
