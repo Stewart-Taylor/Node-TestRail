@@ -113,7 +113,15 @@ class TestRail
         else
             this.getExtraCommand("get_cases/", project_id, "&suite_id=" + suite_id , callback)  
 
-    #addCase: (case_id, callback) ->
+    addCase: (section_id, title, type_id,project_id,estimate,milestone_id,refs, callback) ->
+        json = {}
+        json.title = title
+        json.type_id = type_id
+        json.project_id = project_id
+        json.estimate = estimate
+        json.milestone_id = milestone_id
+        json.refs = refs
+        this.addCommand("add_case/", section_id, JSON.stringify(json) , callback)
 
     #update_case: () ->
 
