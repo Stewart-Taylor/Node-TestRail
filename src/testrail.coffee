@@ -182,7 +182,8 @@ class TestRail
 
     #updatePlanEntry: () ->
 
-    #closePlan: () ->
+    closePlan: (plan_id, callback) ->
+        this.closeCommand("close_plan/", plan_id, callback)
 
     #deletePlan: () ->
 
