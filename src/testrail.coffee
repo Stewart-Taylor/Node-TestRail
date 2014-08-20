@@ -178,7 +178,16 @@ class TestRail
         json.include_all = include_all
         this.addCommand("add_plan_entry/", plan_id, JSON.stringify(json), callback)
 
+    #updatePlan: () ->
+
+    #updatePlanEntry: () ->
+
     #closePlan: () ->
+
+    #deletePlan: () ->
+
+    deletePlanEntry: (plan_id, entry_id, callback) ->
+        this.closeCommand("delete_plan_entry/", (plan_id + "/" + entry_id), callback)
 
     #-------- PRIORITIES ------------------
 
