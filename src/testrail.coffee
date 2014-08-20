@@ -245,7 +245,13 @@ class TestRail
         this.addCommand("add_project/", "", JSON.stringify(json), callback)
 
 
-    #updateProject: () ->
+    updateProject: (project_id, name,announcement,show_announcement, is_completed, callback) ->
+        json = {}
+        json.name = name
+        json.announcement = announcement
+        json.show_announcement = show_announcement
+        json.is_completed = is_completed
+        this.addCommand("add_project/", project_id, JSON.stringify(json), callback)
 
     deleteProject: (project_id, callback) ->
         this.closeCommand("delete_project/",project_id, callback)
