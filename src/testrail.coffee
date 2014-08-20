@@ -1,14 +1,7 @@
 request = require("request")
 
-TEST_FAILED = 5
-TEST_PASSED = 1
-
 API_ROUTE = "/index.php?/api/v2/"
 
-
-
-#Commands
-COMMAND_ADD_RUN = "add_run/"
 
 class TestRail
 
@@ -285,6 +278,10 @@ class TestRail
 
     closeRun: (run_id,callback) ->
         this.closeCommand("close_run/", run_id, callback)
+
+
+    deleteRun: (run_id,callback) ->
+        this.closeCommand("delete_run/", run_id, callback)
 
 
     #-------- STATUSES --------------------
