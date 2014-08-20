@@ -2,7 +2,7 @@
   "author": "Stewart Taylor <stewart@taylore.net> (http://taylore.net",
   "name": "node-testrail",
   "description": "An API wrapper for TestRail",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/Stewart-Taylor/Node-TestRail.git"
