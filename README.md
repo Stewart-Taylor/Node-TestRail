@@ -9,7 +9,7 @@ Node-TestRail is an api wrapper for node. It contains an easy way to interact wi
 How to use
 ----
 ```javascript
-var TestRail = require("Node-TestRail");
+var TestRail = require("node-testrail");
 
 var testrail = new TestRail("https://example.testrail.com/", "email@example.com", "password");
 
