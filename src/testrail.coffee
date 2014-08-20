@@ -185,7 +185,8 @@ class TestRail
     closePlan: (plan_id, callback) ->
         this.closeCommand("close_plan/", plan_id, callback)
 
-    #deletePlan: () ->
+    deletePlan: (plan_id, callback) ->
+        this.closeCommand("delete_plan/", plan_id, callback)
 
     deletePlanEntry: (plan_id, entry_id, callback) ->
         this.closeCommand("delete_plan_entry/", (plan_id + "/" + entry_id), callback)
