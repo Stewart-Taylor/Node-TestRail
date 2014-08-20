@@ -337,7 +337,12 @@ class TestRail
     getSections: (project_id, suite_id, callback) ->
         this.getExtraCommand("get_sections/" , project_id, "&suite_id=" + suite_id, callback)
 
-    #addSection: () ->
+    addSection: (project_id, suite_id, parent_id, name,  callback) ->
+        json = {}
+        json.suite_id = suite_id
+        json.parent_id = parent_id
+        json.name = name
+        this.addCommand("add_section/", project_id, JSON.stringify(json) , callback)
 
 
     #updateSection: () ->
