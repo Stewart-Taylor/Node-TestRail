@@ -2,19 +2,20 @@
   "author": "Stewart Taylor <stewart@taylore.net> (http://taylore.net",
   "name": "node-testrail",
   "description": "An API wrapper for TestRail",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/Stewart-Taylor/Node-TestRail.git"
   },
   "main": "lib/testrail.js",
   "scripts": {
-    "install": "coffee -o lib -c src/*.coffee",
-    "build": "coffee -o lib -c src/*.coffee",
-    "prepublish": "coffee -o lib -c src/*.coffee"
+    "install": "coffee -o lib -c src/testrail.coffee",
+    "build": "coffee -o lib -c src/testrail.coffee",
+    "prepublish": "coffee -o lib -c src/testrail.coffee"
   },
   "dependencies": {
-    "request": "~2.40.0"
+    "request": "~2.40.0",
+    "coffee-script": ">= 1.3"
   },
   "devDependencies": {
     "coffee-script": ">= 1.3"
