@@ -294,11 +294,12 @@ class TestRail
         this.getIdCommand("get_runs/" , run_id, callback)
 
     #TODO: Include all switch and case id select
-    addRun: (projectID,suite_id,name,description, callback) ->
+    addRun: (projectID,suite_id,name,description, milestone_id, callback) ->
         json = {}
         json.suite_id = suite_id
         json.name = name
         json.description = description
+        json.milestone_id = milestone_id
         this.addCommand("add_run/", projectID, JSON.stringify(json) , callback)
 
     updateRun: (runID,name,description, callback) ->
