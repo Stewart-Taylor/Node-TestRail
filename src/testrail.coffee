@@ -6,10 +6,21 @@ API_ROUTE = "/index.php?/api/v2/"
 class TestRail
 
     constructor: (@host, @user, @password) ->
- 
+
+    # used to construct the host name for the API request
+    # Internal Command
+    #
     getFullHostName: () ->
         return @host + API_ROUTE
 
+
+    # Used to perform a close command on the API
+    # Internal Command
+    #
+    # @param [command] The command to send to the API
+    # @param [id] The id of the object to target in the API
+    # @return [callback] The callback
+    #
     closeCommand: (command, id, callback) ->
         request.post(
             uri: this.getFullHostName() + command + id
@@ -19,23 +30,39 @@ class TestRail
                 callback(body)
         ).auth( @user, @password, true)
 
+
+    # Used to get an object in the API by the ID
+    # Internal Command
+    #
+    # @param [command] The command to send to the API
+    # @param [id] The id of the object to target in the API
+    # @return [callback] The callback
+    #
     getIdCommand: (command , id, callback) ->
         request.get(
             uri: this.getFullHostName() + command + id
             headers:
                 "content-type": "application/json"
-            , (err, res, body) ->
+            ,(err, res, body) ->
                 callback(body)
         ).auth( @user, @password, true)
 
-    getCommand: (command , callback) ->
+
+    # Used to get an object in the API
+    # Internal Command
+    #
+    # @param [command] The command to send to the API
+    # @return [callback] The callback
+    #
+    getCommand: (command, callback) ->
         request.get(
             uri: this.getFullHostName() + command
             headers:
                 "content-type": "application/json"
-            , (err, res, body) ->
+            ,(err, res, body) ->
                 callback(body)
         ).auth( @user, @password, true)
+
 
     getExtraCommand: (command, id, extra, callback) ->
         request.get(
@@ -65,7 +92,7 @@ class TestRail
             , (err, res, body) ->
                 callback(body)
         ).auth( @user, @password, true)
-  
+
     sendCommand: (projectID, command, json) ->
         request.post(
             uri: @host + "/index.php?/api/v2/" + command + projectID
@@ -86,16 +113,41 @@ class TestRail
 
     #-------- CASES  ----------------------
 
+    # Used to fetch a case from the API
+    #
+    # @param [case_id] The ID of the case to fetch
+    # @return [callback] The callback with the case object
+    #
     getCase: (case_id, callback) ->
-        this.getIdCommand("get_case/" , case_id, callback)
+        this.getIdCommand("get_case/", case_id, callback)
 
+
+    # Used to fetch a cases from the API
+    #
+    # @param [project_id] The ID of the project
+    # @param [suite_id] The ID of the suite
+    # @param [section_id] The ID of the section
+    # @return [callback] The callback with the case object
+    #
     getCases: (project_id, suite_id, section_id, callback) ->
         if section_id?
             this.getExtraCommand("get_cases/", project_id, "&suite_id=" + suite_id + "&section_id=" + section_id, callback)
         else
             this.getExtraCommand("get_cases/", project_id, "&suite_id=" + suite_id , callback)
 
-    addCase: (section_id, title, type_id,project_id,estimate,milestone_id,refs, callback) ->
+
+    # Used to add cases to the API
+    #
+    # @param [section_id] The ID of the section where to add
+    # @param [title] The title of the case
+    # @param [type_id] The id for the type of case
+    # @param [project_id] The ID of the project
+    # @param [estimate] The estimate of the case
+    # @param [milestone_id] The ID of the milestone to add to
+    # @param [refs]
+    # @return [callback] The callback with the case object
+    #
+    addCase: (section_id, title, type_id, project_id, estimate, milestone_id, refs, callback) ->
         json = {}
         json.title = title
         json.type_id = type_id
@@ -167,7 +219,7 @@ class TestRail
     getPlans: (project_id, callback) ->
         this.getIdCommand("get_plans/",project_id, callback)
 
-    addPlan: (project_id, name, description, milestone_id,callback) ->
+    addPlan: (project_id, name, description, milestone_id, callback) ->
         json = {}
         json.name = name
         json.description = description
@@ -254,7 +306,7 @@ class TestRail
             extra = "/" + case_id + "&limit=" + limit
             this.getExtraCommand("get_results_for_case/",run_id, extra, callback)
 
-    addResult: (test_id, status_id, comment,version, elapsed,defects,assignedto_id, callback) ->
+    addResult: (test_id, status_id, comment, version, elapsed, defects, assignedto_id, callback) ->
         json = {}
         json.status_id = status_id
         json.comment = comment
@@ -267,7 +319,7 @@ class TestRail
      addResults: (run_id, results, callback) ->
         this.addExtraCommand("add_results/", run_id,  JSON.stringify(results), callback)
 
-    addResultForCase: (run_id,case_id,status_id,comment,version,elapsed,defects,assignedto_id, callback) ->
+    addResultForCase: (run_id, case_id, status_id, comment, version, elapsed, defects, assignedto_id, callback) ->
         json = {}
         json.status_id = status_id
         json.comment = comment
@@ -356,7 +408,7 @@ class TestRail
         json.name = name
         json.description = description
         this.addCommand("add_suite/", project_id, JSON.stringify(json) , callback)
-        
+
     updateSuite: (suite_id,name, description, callback) ->
         json = {}
         json.name = name
