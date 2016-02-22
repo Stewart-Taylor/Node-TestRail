@@ -356,7 +356,6 @@ class TestRail
 
     updateRun: (runID,name,description, callback) ->
         json = {}
-        json.suite_id = suite_id
         json.name = name
         json.description = description
         this.addCommand("update_run/", runID, JSON.stringify(json) , callback)
