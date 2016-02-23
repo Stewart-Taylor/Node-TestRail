@@ -2,7 +2,7 @@
   "author": "Stewart Taylor <stewart@taylore.net> (http://taylore.net",
   "name": "node-testrail",
   "description": "An API wrapper for TestRail",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "repository": {
     "type": "git",
     "url": "https://github.com/Stewart-Taylor/Node-TestRail.git"
@@ -20,5 +20,6 @@
   "devDependencies": {
     "coffee-script": ">= 1.3"
   },
-  "keywords": ["testrail", "api", "wrapper"]
+  "keywords": ["testrail", "api", "wrapper"],
+  "license": "MIT"
 }
