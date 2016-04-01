@@ -227,9 +227,10 @@ class TestRail
         this.addCommand("add_plan/", project_id, JSON.stringify(json), callback)
 
     #TODO: update to handle extra params
-    addPlanEntry: (plan_id, suite_id, name, assignedto_id,include_all, callback) ->
+    addPlanEntry: (plan_id, suite_id, name, assignedto_id,include_all, case_ids, callback) ->
         json = {}
         json.suite_id = suite_id
+        json.case_ids = case_ids
         json.name = name
         json.assignedto_id = assignedto_id
         json.include_all = include_all
