@@ -30,12 +30,10 @@ testrail.getTest(TEST_ID, function(test) {
 
 All the helper functions can be found under src within testrail.coffee
 
-
-
 Available Commands
 ----
 
-#####CASES
+##### CASES
 
 
 	getCase(case_id, callback)
@@ -48,19 +46,19 @@ Available Commands
 
 	deleteCase(case_id, callback)
 
-#####Case FIELDS
+##### Case FIELDS
 
 	getCaseFields(callback)
 
-#####Case TYPES
+##### Case TYPES
 
 	getCaseTypes(callback)
 
-#####Configurations
+##### Configurations
 
 	getConfigs(project_id, callback)
 
-#####Milestones
+##### Milestones
 
 	getMilestone(milestone_id, callback)
 
@@ -72,7 +70,7 @@ Available Commands
 
 	deleteMilestone(milestone_id, callback)
 
-#####PLANS
+##### PLANS
 
 	getPlan(plan_id, callback)
 
@@ -93,11 +91,11 @@ Available Commands
 	deletePlanEntry(plan_id, entry_id, callback)
 
 
-#####PRIORITIES
+##### PRIORITIES
 
 	getPriorities(callback)
 
-#####PROJECTS
+##### PROJECTS
 
 	getProject(project_id, callback)
 
@@ -109,7 +107,7 @@ Available Commands
 
 	deleteProject(project_id, callback)
 
-#####RESULTS
+##### RESULTS
 
 	getResults(test_id, callback, limit)
 
@@ -123,11 +121,11 @@ Available Commands
 
 	addResultsForCases(run_id, results, callback)
 
-#####RESULT FIELDS
+##### RESULT FIELDS
 
 	getResultFields(callback)
 
-#####RUNS
+##### RUNS
 
 	getRun(run_id, callback)
 
@@ -141,11 +139,11 @@ Available Commands
 
 	deleteRun(run_id,callback)
 
-#####STATUSES
+##### STATUSES
 
 	getStatuses(callback)
 
-#####SECTIONS
+##### SECTIONS
 
 	getSection(section_id, callback)
 
@@ -158,7 +156,7 @@ Available Commands
 	deleteSection(section_id, callback)
 
 
-#####SUITES
+##### SUITES
 
 	getSuite(suite_id, callback)
 
@@ -170,13 +168,13 @@ Available Commands
 
 	deleteSuite(suite_id, callback)
 
-#####TESTS
+##### TESTS
 
 	getTest(test_id, callback)
 
 	getTests(run_id, callback)
 
-#####USERS
+##### USERS
 
 	getUser(user_id, callback)
 
