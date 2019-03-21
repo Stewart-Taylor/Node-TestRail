@@ -49,15 +49,19 @@ Available Commands
 	deleteCase(case_id, callback)
 
 #####Case FIELDS
+
 	getCaseFields(callback)
 
 #####Case TYPES
+
 	getCaseTypes(callback)
 
 #####Configurations
+
 	getConfigs(project_id, callback)
 
 #####Milestones
+
 	getMilestone(milestone_id, callback)
 
 	getMilestones(project_id, callback)
@@ -69,6 +73,7 @@ Available Commands
 	deleteMilestone(milestone_id, callback)
 
 #####PLANS
+
 	getPlan(plan_id, callback)
 
 	getPlans(project_id, callback)
@@ -89,9 +94,11 @@ Available Commands
 
 
 #####PRIORITIES
+
 	getPriorities(callback)
 
 #####PROJECTS
+
 	getProject(project_id, callback)
 
 	getProjects(callback)
@@ -103,6 +110,7 @@ Available Commands
 	deleteProject(project_id, callback)
 
 #####RESULTS
+
 	getResults(test_id, callback, limit)
 
 	getResultsForCase(run_id, case_id, limit, callback)
@@ -116,9 +124,11 @@ Available Commands
 	addResultsForCases(run_id, results, callback)
 
 #####RESULT FIELDS
+
 	getResultFields(callback)
 
 #####RUNS
+
 	getRun(run_id, callback)
 
 	getRuns(run_id, callback)
@@ -132,9 +142,11 @@ Available Commands
 	deleteRun(run_id,callback)
 
 #####STATUSES
+
 	getStatuses(callback)
 
 #####SECTIONS
+
 	getSection(section_id, callback)
 
 	getSections(project_id, suite_id, callback)
@@ -147,6 +159,7 @@ Available Commands
 
 
 #####SUITES
+
 	getSuite(suite_id, callback)
 
 	getSuites(project_id, callback)
@@ -158,11 +171,13 @@ Available Commands
 	deleteSuite(suite_id, callback)
 
 #####TESTS
+
 	getTest(test_id, callback)
 
 	getTests(run_id, callback)
 
 #####USERS
+
 	getUser(user_id, callback)
 
 	getUserByEmail(email, callback)
