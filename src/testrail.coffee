@@ -122,7 +122,7 @@ class TestRail
         this.getIdCommand("get_case/", case_id, callback)
 
 
-    # Used to fetch a cases from the API
+    # Used to fetch cases from the API
     #
     # @param [project_id] The ID of the project
     # @param [suite_id] The ID of the suite
@@ -184,6 +184,33 @@ class TestRail
 
     getConfigs: (project_id, callback) ->
         this.getIdCommand("get_configs/" , project_id, callback)
+        
+    addConfigGroup: (project_id, name, callback) ->
+    	json = {}
+    	json.name = name
+        this.addCommand("add_config_group/" , project_id, JSON.stringify(json), callback)
+        
+    addConfig: (config_group_id, name, callback) ->
+    	json = {}
+    	json.name = name
+        this.addCommand("add_config/" , config_group_id, JSON.stringify(json), callback)
+        
+    updateConfigGroup: (config_group_id, name, callback) ->
+    	json = {}
+    	json.name = name
+        this.addCommand("update_config_group/" , config_group_id, JSON.stringify(json), callback)
+        
+	updateConfig: (config_id, name, callback) ->
+    	json = {}
+    	json.name = name
+        this.addCommand("update_config/" , config_id, JSON.stringify(json), callback)
+        
+    deleteConfigGroup: (config_group_id, callback) ->
+        this.closeCommand("delete_config_group/", config_group_id, callback)
+        
+	deleteConfig: (config_id, callback) ->
+        this.closeCommand("delete_config/", config_id, callback)
+    	 
 
     #-------- MILESTONES ------------------
 
@@ -193,19 +220,24 @@ class TestRail
     getMilestones: (project_id, callback) ->
         this.getIdCommand("get_milestones/",project_id, callback)
 
-    addMilestone: (project_id, name, description, due_on, callback) ->
+    addMilestone: (project_id, name, description, due_on, parent_id, start_on, callback) ->
         json = {}
         json.name = name
         json.description = description
         json.due_on = due_on
+        json.parent_id = parent_id
+        json.start_on = start_on
         this.addCommand("add_milestone/", project_id, JSON.stringify(json), callback)
 
-    updateMilestone: (milestone_id, name, description, due_on, is_completed, callback) ->
+    updateMilestone: (milestone_id, name, description, due_on, start_on, is_completed, is_started, parent_id, callback) ->
         json = {}
         json.name = name
         json.description = description
         json.due_on = due_on
+        json.parent_id = parent_id
         json.is_completed = is_completed
+        json.start_on = start_on
+        json.is_started = is_started
         this.addCommand("update_milestone/", milestone_id, JSON.stringify(json), callback)
 
     deleteMilestone: (milestone_id, callback) ->
